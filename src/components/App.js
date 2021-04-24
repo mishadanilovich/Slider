@@ -1,9 +1,12 @@
 import React from 'react';
 
+// Import Components
 import Carousel from './carousel/Carousel';
 
+// Import Style
 import '../style/App.css';
 
+// Test data
 const data = [
   {
     id: 1,
