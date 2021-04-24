@@ -1,0 +1,18 @@
+:root {
+  --color-orange: #ffc56d;
+  --color-grey: #6a8686;
+}
+
+.app {
+  display: grid;
+  grid-template-rows: 100vh;
+  grid-template-columns:
+    [full-start] minmax(6rem, 1fr) [center-start] repeat(
+      12,
+      minmax(min-content, 10rem)
+    )
+    [center-end] minmax(6rem, 1fr)
+    [full-end];
+
+  align-items: center;
+}

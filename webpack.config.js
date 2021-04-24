@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { SourceMapDevToolPlugin } = require('webpack');
 const path = require('path');
 
 module.exports = {
@@ -10,6 +11,9 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './index.html',
+    }),
+    new SourceMapDevToolPlugin({
+      filename: '[file].map',
     }),
   ],
   resolve: {
@@ -30,6 +34,11 @@ module.exports = {
       {
         test: /\.png|svg|jpg|gif$/,
         use: ['file-loader'],
+      },
+      {
+        test: /\.js$/,
+        enforce: 'pre',
+        use: ['source-map-loader'],
       },
     ],
   },
