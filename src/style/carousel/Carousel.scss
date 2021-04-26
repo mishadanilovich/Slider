@@ -1,9 +1,4 @@
-// Color variables
-$color-orange: #ffc56d;
-$color-grey: #6a8686;
-$color-light-grey: #f3fbee;
-
-$color-white: #ffffff;
+@import '../index.scss';
 
 .carousel {
   grid-column: center-start / center-end;
@@ -19,7 +14,7 @@ $color-white: #ffffff;
     width: 100%;
   }
 
-  &__container__content {
+  &__content {
     display: flex;
     width: 55vw;
     height: 50vh;
@@ -33,52 +28,52 @@ $color-white: #ffffff;
     align-items: center;
     margin-top: 1rem;
   }
-}
 
-.btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  width: 5rem;
-  height: 5rem;
-  border-radius: 50%;
-  border: none;
-  font-size: 3.6rem;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    border: none;
+    font-size: 3.6rem;
 
-  background: $color-grey;
+    background: $color-grey;
 
-  cursor: pointer;
+    cursor: pointer;
 
-  transition: all 0.2s;
-
-  &:active,
-  &:focus {
-    outline: none;
-  }
-
-  &--fill {
-    fill: $color-orange;
     transition: all 0.2s;
-  }
-}
 
-@media (hover: none) and (pointer: coarse) {
-  .btn:active {
-    background: $color-orange;
-  }
+    &:active,
+    &:focus {
+      outline: none;
+    }
 
-  .btn:active .btn--fill {
-    fill: $color-white;
-  }
-}
+    &-icon_fill {
+      fill: $color-orange;
+      transition: all 0.2s;
+    }
 
-@media (hover: hover) and (pointer: fine) {
-  .btn:hover {
-    background: $color-orange;
-  }
+    @media (hover: none) and (pointer: coarse) {
+      &:active {
+        background: $color-orange;
+      }
 
-  .btn:hover .btn--fill {
-    fill: $color-white;
+      &:active &-icon_fill {
+        fill: $color-white;
+      }
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        background: $color-orange;
+      }
+
+      &:hover &-icon_fill {
+        fill: $color-white;
+      }
+    }
   }
 }

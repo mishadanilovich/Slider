@@ -1,9 +1,4 @@
-// Color variables
-$color-orange: #ffc56d;
-$color-grey: #6a8686;
-$color-light-grey: #f3fbee;
-
-$color-white: #ffffff;
+@import '../index.scss';
 
 .dot {
   width: 3rem;
@@ -25,9 +20,9 @@ $color-white: #ffffff;
   &:not(:last-of-type) {
     margin-right: 1rem;
   }
-}
 
-.active {
-  background: $color-orange;
-  transform: scale(1.1);
+  &_active {
+    background: $color-orange;
+    transform: scale(1.1);
+  }
 }

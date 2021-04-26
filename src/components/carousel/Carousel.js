@@ -22,7 +22,7 @@ const renderCarousel = (slides, selectedSlide, swipe) => {
     return (
       <div
         key={i}
-        className={`slide slide--${i}`}
+        className={`slide`}
         style={carouselAnimation(selectedSlide, i, swipe)}
       >
         <Slide slide={slide} />
@@ -44,7 +44,7 @@ const renderDots = (count, selectedSlide, setSelectedSlide) => {
         goToSlide={goToSlide}
         key={i}
         slide={i}
-        status={i === selectedSlide ? 'active' : ''}
+        status={i === selectedSlide ? 'dot_active' : ''}
       />
     );
 
@@ -62,7 +62,7 @@ const renderButtons = (action, selectedSlide, setSelectedSlide) => {
           ? setSelectedSlide(selectedSlide + 1)
           : setSelectedSlide(selectedSlide - 1)
       }
-      className="btn"
+      className="carousel__btn"
     >
       {action === 'next' ? <Next /> : <Prev />}
     </button>
@@ -111,7 +111,7 @@ const Carousel = props => {
 
             setSwipe(0);
           }}
-          className="carousel__container__content"
+          className="carousel__content"
         >
           {renderCarousel(props.data, selectedSlide, swipe)}
         </div>

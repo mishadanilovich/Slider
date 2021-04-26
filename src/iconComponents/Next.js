@@ -3,7 +3,7 @@ import React from 'react';
 const Next = () => {
   return (
     <svg
-      className="btn--fill"
+      className="carousel__btn-icon_fill"
       xmlns="http://www.w3.org/2000/svg"
       height="1em"
       viewBox="0 0 24 24"
