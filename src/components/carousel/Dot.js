@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Import Style
-import '../../style/carousel/Dot.css';
+import '../../style/carousel/Dot.scss';
 
 const Dot = props => {
   return (

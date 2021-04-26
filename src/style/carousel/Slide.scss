@@ -1,3 +1,10 @@
+// Color variables
+$color-orange: #ffc56d;
+$color-grey: #6a8686;
+$color-light-grey: #f3fbee;
+
+$color-white: #ffffff;
+
 .slide {
   width: 45vw;
   height: 50vh;
@@ -12,26 +19,26 @@
   left: 5vw;
   top: 0;
 
-  background: var(--color-grey);
+  background: $color-grey;
   border-radius: 2rem;
-  color: #f3fbee;
+  color: $color-light-grey;
 
   transition: transform 0.2s;
-}
 
-.slide__title {
-  font-size: 6rem;
-  text-align: center;
-}
+  &__title {
+    font-size: 6rem;
+    text-align: center;
+  }
 
-.slide__description {
-  font-size: 3rem;
-}
+  &__description {
+    font-size: 3rem;
+  }
 
-.slide__img {
-  display: block;
-  height: 40%;
-  width: 50%;
+  &__img {
+    display: block;
+    height: 40%;
+    width: 50%;
+  }
 }
 
 .img {

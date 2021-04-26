@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Import Style
-import '../../style/carousel/Slide.css';
+import '../../style/carousel/Slide.scss';
 
 const Slide = ({ slide }) => {
   return (

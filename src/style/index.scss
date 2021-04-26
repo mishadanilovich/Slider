@@ -1,0 +1,28 @@
+// Color variables
+$color-orange: #ffc56d;
+$color-grey: #6a8686;
+$color-light-grey: #f3fbee;
+
+$color-white: #ffffff;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+
+  @media only screen and (max-width: 75em) {
+    font-size: 50%;
+  }
+
+  @media only screen and (max-width: 31.25em) {
+    font-size: 38%;
+  }
+}
+
+body {
+  background: $color-light-grey;
+}

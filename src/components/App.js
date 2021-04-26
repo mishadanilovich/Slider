@@ -4,7 +4,7 @@ import React from 'react';
 import Carousel from './carousel/Carousel';
 
 // Import Style
-import '../style/App.css';
+import '../style/App.scss';
 
 // Test data
 const data = [

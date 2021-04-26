@@ -9,7 +9,7 @@ import Next from '../../iconComponents/Next';
 import Prev from '../../iconComponents/Prev';
 
 // Import Style
-import '../../style/carousel/Carousel.css';
+import '../../style/carousel/Carousel.scss';
 
 const carouselAnimation = (selectedSlide, index, swipe) => {
   return {
