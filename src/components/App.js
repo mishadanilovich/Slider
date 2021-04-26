@@ -5,7 +5,7 @@ import Carousel from './carousel/Carousel';
 import Slide from './carousel/Slide';
 
 // Import Style
-import '../style/App.scss';
+import '../style/_App.scss';
 
 const App = () => {
   return (

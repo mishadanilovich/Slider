@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // Import Components
 import Slide from './Slide';
@@ -9,7 +9,7 @@ import Next from '../../iconComponents/Next';
 import Prev from '../../iconComponents/Prev';
 
 // Import Style
-import '../../style/carousel/Carousel.scss';
+import '../../style/carousel/_Carousel.scss';
 
 const carouselAnimation = (selectedSlide, index, swipe) => {
   return {
@@ -22,7 +22,7 @@ const renderCarousel = (slides, selectedSlide, swipe) => {
     return (
       <div
         key={i}
-        className={`slide`}
+        className="slide"
         style={carouselAnimation(selectedSlide, i, swipe)}
       >
         <Slide>{slide}</Slide>
@@ -74,6 +74,17 @@ const Carousel = props => {
   const [startCor, setStartCor] = useState({ corX: 0, corY: 0 });
   const [endCor, setEndCor] = useState({ corX: 0, corY: 0 });
   const [swipe, setSwipe] = useState(0);
+  const [mouseStatus, setMouseStatus] = useState(false);
+
+  const endOfAction = () => {
+    if (startCor.corX > endCor.corX && endCor.corX - startCor.corX < -150)
+      setSelectedSlide(selectedSlide + 1);
+
+    if (startCor.corX < endCor.corX && endCor.corX - startCor.corX > 150)
+      setSelectedSlide(selectedSlide - 1);
+
+    setSwipe(0);
+  };
 
   if (selectedSlide === props.children.length) setSelectedSlide(0);
   if (selectedSlide < 0) setSelectedSlide(props.children.length - 1);
@@ -83,6 +94,28 @@ const Carousel = props => {
       <div className="carousel__container">
         {renderButtons('prev', selectedSlide, setSelectedSlide, props.children)}
         <div
+          onMouseDown={e => {
+            setMouseStatus(true);
+            setStartCor({
+              corX: e.clientX,
+              corY: e.clientY,
+            });
+          }}
+          onMouseMove={e => {
+            if (mouseStatus) {
+              console.log(e);
+              setSwipe(e.clientX - startCor.corX);
+              setEndCor({
+                corX: e.clientX,
+                corY: e.clientY,
+              });
+            }
+          }}
+          onMouseUp={() => {
+            setMouseStatus(false);
+            endOfAction();
+          }}
+          onMouseLeave={() => setMouseStatus(false)}
           onTouchStart={e => {
             setStartCor({
               corX: e.touches[0].clientX,
@@ -97,19 +130,7 @@ const Carousel = props => {
             });
           }}
           onTouchEnd={() => {
-            if (
-              startCor.corX > endCor.corX &&
-              endCor.corX - startCor.corX < -150
-            )
-              setSelectedSlide(selectedSlide + 1);
-
-            if (
-              startCor.corX < endCor.corX &&
-              endCor.corX - startCor.corX > 150
-            )
-              setSelectedSlide(selectedSlide - 1);
-
-            setSwipe(0);
+            endOfAction();
           }}
           className="carousel__content"
         >
