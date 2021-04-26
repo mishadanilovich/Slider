@@ -25,7 +25,7 @@ const renderCarousel = (slides, selectedSlide, swipe) => {
         className={`slide`}
         style={carouselAnimation(selectedSlide, i, swipe)}
       >
-        <Slide slide={slide} />
+        <Slide>{slide}</Slide>
       </div>
     );
   });
@@ -75,13 +75,13 @@ const Carousel = props => {
   const [endCor, setEndCor] = useState({ corX: 0, corY: 0 });
   const [swipe, setSwipe] = useState(0);
 
-  if (selectedSlide === props.data.length) setSelectedSlide(0);
-  if (selectedSlide < 0) setSelectedSlide(props.data.length - 1);
+  if (selectedSlide === props.children.length) setSelectedSlide(0);
+  if (selectedSlide < 0) setSelectedSlide(props.children.length - 1);
 
   return (
     <div className="carousel">
       <div className="carousel__container">
-        {renderButtons('prev', selectedSlide, setSelectedSlide, props.data)}
+        {renderButtons('prev', selectedSlide, setSelectedSlide, props.children)}
         <div
           onTouchStart={e => {
             setStartCor({
@@ -113,12 +113,12 @@ const Carousel = props => {
           }}
           className="carousel__content"
         >
-          {renderCarousel(props.data, selectedSlide, swipe)}
+          {renderCarousel(props.children, selectedSlide, swipe)}
         </div>
         {renderButtons('next', selectedSlide, setSelectedSlide)}
       </div>
       <div className="carousel__dots">
-        {renderDots(props.data.length, selectedSlide, setSelectedSlide)}
+        {renderDots(props.children.length, selectedSlide, setSelectedSlide)}
       </div>
     </div>
   );
