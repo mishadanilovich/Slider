@@ -94,6 +94,7 @@ const Carousel = props => {
       <div className="carousel__container">
         {renderButtons('prev', selectedSlide, setSelectedSlide, props.children)}
         <div
+          // Settings for desktop swipe
           onMouseDown={e => {
             setMouseStatus(true);
             setStartCor({
@@ -103,7 +104,6 @@ const Carousel = props => {
           }}
           onMouseMove={e => {
             if (mouseStatus) {
-              console.log(e);
               setSwipe(e.clientX - startCor.corX);
               setEndCor({
                 corX: e.clientX,
@@ -115,7 +115,11 @@ const Carousel = props => {
             setMouseStatus(false);
             endOfAction();
           }}
-          onMouseLeave={() => setMouseStatus(false)}
+          onMouseLeave={e => {
+            setSwipe(0);
+            setMouseStatus(false);
+          }}
+          // Settings for mobile swipe
           onTouchStart={e => {
             setStartCor({
               corX: e.touches[0].clientX,
