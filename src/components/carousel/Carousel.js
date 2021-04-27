@@ -13,7 +13,7 @@ import '../../style/carousel/_Carousel.scss';
 
 const carouselAnimation = (selectedSlide, index, swipe) => {
   return {
-    transform: `translateX(${105 * (index - selectedSlide) + swipe / 10}%)`,
+    transform: `translateX(${105 * (index - selectedSlide) + swipe / 8}%)`,
   };
 };
 

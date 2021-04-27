@@ -23,62 +23,47 @@ Builds the app for production to the `dist` folder.
 
 ## Setting up the Slider
 
-Sample data
+### Sample data
+
+To add your data to a slide, you must pass it between open and close tags of the `Slide` component. You can add any kind of HTML content.
 
 ```javascript
-const data = [
-  {
-    id: 1,
-    title: 'Beautiful View',
-    description: 'Take a photo!',
-    imgSrc:
-      'https://media.macphun.com/img/uploads/customer/how-to/579/15531840725c93b5489d84e9.43781620.jpg?q=85&w=1340',
-  },
-  {
-    id: 2,
-    title: 'Cat',
-    description: 'Red cat!',
-    imgSrc:
-      'https://i.pinimg.com/originals/9d/eb/f8/9debf873800cadf6f7765f75929a303b.jpg',
-  },
-  {
-    id: 3,
-    title: 'Dog',
-    description: 'Friendly dog!',
-    imgSrc:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkabCx5rqgLs4noZKCrL2MAvB-LZdSF5Mo1g&usqp=CAU',
-  },
-];
+<Slide>
+  <h1>Beautiful View</h1>
+  <img
+    src="https://media.macphun.com/img/uploads/customer/how-to/579/15531840725c93b5489d84e9.43781620.jpg?q=85&w=1340"
+    alt="View"
+  />
+</Slide>
 ```
 
-You must pass the data to the `props` of the `Carousel` component
+To add a new slide, you must add the `Slide` component between open and close tags of the `Carousel` component. And you can add any number of `Slide` components.
 
 ```javascript
 const App = () => {
   return (
     <div className="app">
-      <Carousel data={data} />
+      <Carousel>
+        <Slide>
+          <h1>Beautiful View</h1>
+          <img
+            src="https://media.macphun.com/img/uploads/customer/how-to/579/15531840725c93b5489d84e9.43781620.jpg?q=85&w=1340"
+            alt="View"
+          />
+        </Slide>
+        <Slide>
+          <h1>Dog</h1>
+          <img
+            src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/golden-retriever-royalty-free-image-506756303-1560962726.jpg?crop=0.672xw:1.00xh;0.166xw,0&resize=640:*"
+            alt="Dog"
+          />
+        </Slide>
+      </Carousel>
     </div>
-  );
-};
-```
-
-Depending on the `data` you have to edit the `Slide` component
-
-```javascript
-const Slide = ({ slide }) => {
-  return (
-    <>
-      <h2 className="slide__title">{slide.title}</h2>
-      <p className="slide__description">{slide.description}</p>
-      <div className="slide__img">
-        <img src={slide.imgSrc} alt={slide.title} className="img"></img>
-      </div>
-    </>
   );
 };
 ```
 
 ## Visuals
 
-![Slider](https://user-images.githubusercontent.com/76782175/115964688-5a7aad80-a52e-11eb-9eaa-89dfc2859437.gif)
+![Carousel](https://user-images.githubusercontent.com/76782175/116260353-47125100-a77f-11eb-8626-aa51f11991e0.gif)
