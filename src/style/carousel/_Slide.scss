@@ -1,0 +1,30 @@
+@import '../variables';
+
+.slide {
+  width: 45vw;
+  height: 50vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  left: 5vw;
+  top: 0;
+
+  background: $color-grey;
+  border-radius: 2rem;
+  color: $color-light-grey;
+
+  transition: transform 0.2s;
+
+  overflow: auto;
+  user-select: none;
+
+  img {
+    width: 60%;
+    height: 70%;
+    pointer-events: none;
+  }
+}
