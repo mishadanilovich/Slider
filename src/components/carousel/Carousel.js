@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 // Import Components
-import Slide from './Slide';
 import Dot from './Dot';
 
 // Import IconComponents
@@ -25,7 +24,7 @@ const renderCarousel = (slides, selectedSlide, swipe) => {
         className="slide"
         style={carouselAnimation(selectedSlide, i, swipe)}
       >
-        <Slide>{slide}</Slide>
+        {slide}
       </div>
     );
   });
