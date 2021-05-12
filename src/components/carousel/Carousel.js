@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 // Import Components
-import Slide from './Slide';
 import Dot from './Dot';
 
 // Import IconComponents
@@ -25,7 +24,7 @@ const renderCarousel = (slides, selectedSlide, swipe) => {
         className="slide"
         style={carouselAnimation(selectedSlide, i, swipe)}
       >
-        <Slide>{slide}</Slide>
+        {slide}
       </div>
     );
   });
@@ -77,10 +76,10 @@ const Carousel = props => {
   const [mouseStatus, setMouseStatus] = useState(false);
 
   const endOfAction = () => {
-    if (startCor.corX > endCor.corX && endCor.corX - startCor.corX < -150)
+    if (startCor.corX > endCor.corX && endCor.corX - startCor.corX < -50)
       setSelectedSlide(selectedSlide + 1);
 
-    if (startCor.corX < endCor.corX && endCor.corX - startCor.corX > 150)
+    if (startCor.corX < endCor.corX && endCor.corX - startCor.corX > 50)
       setSelectedSlide(selectedSlide - 1);
 
     setSwipe(0);
