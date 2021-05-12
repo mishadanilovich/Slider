@@ -21,6 +21,10 @@
     position: relative;
 
     overflow: hidden;
+
+    @media only screen and (max-width: 31.25em) {
+      width: 70vw;
+    }
   }
 
   &__dots {

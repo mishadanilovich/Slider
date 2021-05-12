@@ -26,5 +26,14 @@
     width: 60%;
     height: 70%;
     pointer-events: none;
+
+    @media only screen and (max-width: 31.25em) {
+      width: 70%;
+      height: 60%;
+    }
+  }
+
+  @media only screen and (max-width: 31.25em) {
+    width: 60vw;
   }
 }
