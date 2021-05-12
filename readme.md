@@ -28,13 +28,13 @@ Builds the app for production to the `dist` folder.
 To add your data to a slide, you must pass it between open and close tags of the `React.Fragment` component. You can add any kind of HTML content.
 
 ```javascript
-<Slide>
+<>
   <h1>Beautiful View</h1>
   <img
     src="https://media.macphun.com/img/uploads/customer/how-to/579/15531840725c93b5489d84e9.43781620.jpg?q=85&w=1340"
     alt="View"
   />
-</Slide>
+</>
 ```
 
 To add a new slide, you must add `React.Fragment` component between open and close tags of the `Carousel` component. And you can add any number of `React.Fragment` components.
