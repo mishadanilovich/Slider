@@ -77,10 +77,10 @@ const Carousel = props => {
   const [mouseStatus, setMouseStatus] = useState(false);
 
   const endOfAction = () => {
-    if (startCor.corX > endCor.corX && endCor.corX - startCor.corX < -150)
+    if (startCor.corX > endCor.corX && endCor.corX - startCor.corX < -50)
       setSelectedSlide(selectedSlide + 1);
 
-    if (startCor.corX < endCor.corX && endCor.corX - startCor.corX > 150)
+    if (startCor.corX < endCor.corX && endCor.corX - startCor.corX > 50)
       setSelectedSlide(selectedSlide - 1);
 
     setSwipe(0);
