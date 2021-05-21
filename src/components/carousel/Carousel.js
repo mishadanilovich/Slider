@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 
 // Import Components
 import Dot from './Dot';
@@ -10,19 +10,22 @@ import Prev from '../../iconComponents/Prev';
 // Import Style
 import '../../style/carousel/_Carousel.scss';
 
-const carouselAnimation = (selectedSlide, index, swipe) => {
+// Move slides depending on their width
+const carouselAnimation = (selectedSlide, index, swipe, slideWidth) => {
   return {
-    transform: `translateX(${105 * (index - selectedSlide) + swipe / 8}%)`,
+    transform: `translateX(${Math.round(
+      slideWidth * (index - selectedSlide) + swipe
+    )}px)`,
   };
 };
 
-const renderCarousel = (slides, selectedSlide, swipe) => {
+const renderCarousel = (slides, selectedSlide, swipe, slideWidth) => {
   return slides.map((slide, i) => {
     return (
       <div
         key={i}
         className="slide"
-        style={carouselAnimation(selectedSlide, i, swipe)}
+        style={carouselAnimation(selectedSlide, i, swipe, slideWidth)}
       >
         {slide}
       </div>
@@ -75,6 +78,14 @@ const Carousel = props => {
   const [swipe, setSwipe] = useState(0);
   const [mouseStatus, setMouseStatus] = useState(false);
 
+  // Processing the slide width
+  const slide = useRef({});
+  const [slideWidth, setSlideWidth] = useState(1000);
+
+  useEffect(() => {
+    setSlideWidth(slide.current.clientWidth);
+  }, []);
+
   const endOfAction = () => {
     if (startCor.corX > endCor.corX && endCor.corX - startCor.corX < -50)
       setSelectedSlide(selectedSlide + 1);
@@ -88,11 +99,16 @@ const Carousel = props => {
   if (selectedSlide === props.children.length) setSelectedSlide(0);
   if (selectedSlide < 0) setSelectedSlide(props.children.length - 1);
 
+  window.addEventListener('resize', () =>
+    setSlideWidth(slide.current.clientWidth)
+  );
+
   return (
     <div className="carousel">
       <div className="carousel__container">
-        {renderButtons('prev', selectedSlide, setSelectedSlide, props.children)}
+        {renderButtons('prev', selectedSlide, setSelectedSlide)}
         <div
+          ref={slide}
           // Settings for desktop swipe
           onMouseDown={e => {
             setMouseStatus(true);
@@ -137,12 +153,16 @@ const Carousel = props => {
           }}
           className="carousel__content"
         >
-          {renderCarousel(props.children, selectedSlide, swipe)}
+          {renderCarousel(props.children, selectedSlide, swipe, slideWidth)}
         </div>
         {renderButtons('next', selectedSlide, setSelectedSlide)}
       </div>
       <div className="carousel__dots">
-        {renderDots(props.children.length, selectedSlide, setSelectedSlide)}
+        {useMemo(
+          () =>
+            renderDots(props.children.length, selectedSlide, setSelectedSlide),
+          [selectedSlide]
+        )}
       </div>
     </div>
   );
