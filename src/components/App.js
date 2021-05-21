@@ -24,6 +24,13 @@ const App = () => {
             alt="Dog"
           />
         </>
+        <>
+          <h1>Snow Leopard</h1>
+          <img
+            src="http://nevseoboi.com.ua/uploads/posts/2011-07/1310297287_hd-wallpapers-wide-pack-14-43.png"
+            alt="View"
+          />
+        </>
       </Carousel>
     </div>
   );
